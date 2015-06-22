@@ -1,4 +1,7 @@
 language: scala
+cache:
+  directories:
+  - $HOME/.ivy2/cache
 script:
   - sbt compile
   - sbt fastOptJS
