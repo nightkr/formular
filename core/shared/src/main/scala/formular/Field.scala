@@ -1,10 +1,8 @@
 package formular
 
-import microjson.{JsString, JsValue}
+import microjson.JsValue
 import prickle._
 
-import scala.collection.mutable
-import scala.reflect.ClassTag
 import scala.util.{Failure, Success, Try}
 
 sealed trait Field {

@@ -4,7 +4,6 @@ import formular.react.FormWidget.{EditProps, EditState}
 import formular.{Field, FieldState}
 import japgolly.scalajs.react.vdom.prefix_<^._
 import japgolly.scalajs.react.{BackendScope, ReactComponentB, ReactEvent}
-import prickle.Pickle
 
 class FormWidgetEditBackend($: BackendScope[EditProps, EditState]) {
   def onFieldStateChange(id: Int, newValue: FieldState) = $.modState(s => s.copy(fieldStates = s.fieldStates + (id -> newValue)))
@@ -24,8 +23,6 @@ class FormWidgetEditBackend($: BackendScope[EditProps, EditState]) {
 }
 
 object FormWidget {
-  case class EditProps(fields: Seq[Field], onSubmit: Map[Int, FieldState] => Unit, onSubmitFailure: Map[Int, String] => Unit = identity)
-  case class EditState(fieldStates: Map[Int, FieldState])
 
   val edit = ReactComponentB[EditProps]("FormWidget")
     .getInitialState(props => EditState(fieldStates = props.fields.map(field => (field.id, field.defaultState)).toMap))
@@ -44,4 +41,9 @@ object FormWidget {
     )
     )
     .build
+
+  case class EditProps(fields: Seq[Field], onSubmit: Map[Int, FieldState] => Unit, onSubmitFailure: Map[Int, String] => Unit = identity)
+
+  case class EditState(fieldStates: Map[Int, FieldState])
+
 }

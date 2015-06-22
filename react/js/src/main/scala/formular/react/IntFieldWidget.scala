@@ -1,7 +1,7 @@
 package formular.react
 
 import formular.IntField
-import formular.react.IntFieldWidget.{EditState, EditProps}
+import formular.react.IntFieldWidget.{EditProps, EditState}
 import japgolly.scalajs.react.vdom.prefix_<^._
 import japgolly.scalajs.react.{BackendScope, ReactComponentB, ReactEventI}
 
@@ -25,10 +25,6 @@ class IntFieldWidgetEditBackend($: BackendScope[EditProps, EditState]) {
 
 object IntFieldWidget {
 
-  case class EditProps(field: IntField, value: Option[Int], validationMsg: Option[String], change: Try[Option[Int]] => Unit)
-
-  case class EditState(tmpValue: String)
-
   val edit = ReactComponentB[EditProps]("IntFieldWidget_edit")
     .initialState(EditState(""))
     .backend(new IntFieldWidgetEditBackend(_))
@@ -48,4 +44,8 @@ object IntFieldWidget {
     )
     )
     .build
+
+  case class EditProps(field: IntField, value: Option[Int], validationMsg: Option[String], change: Try[Option[Int]] => Unit)
+
+  case class EditState(tmpValue: String)
 }

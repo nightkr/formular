@@ -1,7 +1,7 @@
 package formular.react
 
 import formular.TextField
-import formular.react.TextFieldWidget.{EditState, EditProps}
+import formular.react.TextFieldWidget.{EditProps, EditState}
 import japgolly.scalajs.react.vdom.prefix_<^._
 import japgolly.scalajs.react.{BackendScope, ReactComponentB, ReactEventI}
 
@@ -14,10 +14,6 @@ class TextFieldWidgetEditBackend($: BackendScope[EditProps, EditState]) {
 }
 
 object TextFieldWidget {
-
-  case class EditProps(field: TextField, value: Option[String], validationMsg: Option[String], change: String => Unit)
-
-  case class EditState(tmpValue: String)
 
   val edit = ReactComponentB[EditProps]("TextFieldWidget_edit")
     .initialState(EditState(""))
@@ -38,4 +34,8 @@ object TextFieldWidget {
     )
     )
     .build
+
+  case class EditProps(field: TextField, value: Option[String], validationMsg: Option[String], change: String => Unit)
+
+  case class EditState(tmpValue: String)
 }

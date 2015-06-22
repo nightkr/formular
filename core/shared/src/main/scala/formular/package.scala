@@ -20,7 +20,7 @@ package object formular {
     override def unpickle[P](pickle: P, state: mutable.Map[String, Any])(implicit config: PConfig[P]): Try[Right[A, B]] = ev.unpickle(pickle, state).map(Right.apply)
   }
 
-  implicit def eitherPickler[A: Pickler: Unpickler, B: Pickler: Unpickler]: PicklerPair[Either[A, B]] =
+  implicit def eitherPickler[A: Pickler : Unpickler, B: Pickler : Unpickler]: PicklerPair[Either[A, B]] =
     CompositePickler[scala.util.Either[A, B]]
       .concreteType[scala.util.Left[A, B]]
       .concreteType[scala.util.Right[A, B]]
@@ -31,4 +31,5 @@ package object formular {
       case Success(x) => Right(x)
     }
   }
+
 }
