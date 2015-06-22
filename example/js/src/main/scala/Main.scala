@@ -1,5 +1,5 @@
-import forms._
-import forms.react.FormWidget
+import formular._
+import formular.react.FormWidget
 import japgolly.scalajs.react.React
 import microjson.JsValue
 import org.scalajs.dom

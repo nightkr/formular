@@ -1,6 +1,6 @@
-package forms.react
+package formular.react
 
-import forms._
+import formular._
 
 import scala.util.Try
 

@@ -3,7 +3,7 @@ import prickle._
 import scala.collection.mutable
 import scala.util.{Failure, Success, Try}
 
-package object forms {
+package object formular {
   implicit def leftPickler[A, B](implicit ev: Pickler[A]): Pickler[Left[A, B]] = new Pickler[Left[A, B]] {
     override def pickle[P](obj: Left[A, B], state: PickleState)(implicit config: PConfig[P]): P = ev.pickle(obj.a, state)
   }

@@ -1,4 +1,4 @@
-package forms
+package formular
 
 import microjson.{JsString, JsValue}
 import prickle._

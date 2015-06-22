@@ -1,7 +1,7 @@
-package forms.react
+package formular.react
 
-import forms.react.FormWidget.EditState
-import forms.{Field, FieldState}
+import formular.react.FormWidget.EditState
+import formular.{Field, FieldState}
 import japgolly.scalajs.react.vdom.prefix_<^._
 import japgolly.scalajs.react.{BackendScope, ReactComponentB, ReactEvent}
 import prickle.Pickle

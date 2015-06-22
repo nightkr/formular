@@ -1,7 +1,7 @@
-package forms.react
+package formular.react
 
-import forms.TextField
-import forms.react.TextFieldWidget.{EditState, EditProps}
+import formular.TextField
+import formular.react.TextFieldWidget.{EditState, EditProps}
 import japgolly.scalajs.react.vdom.prefix_<^._
 import japgolly.scalajs.react.{BackendScope, ReactComponentB, ReactEventI}
 
