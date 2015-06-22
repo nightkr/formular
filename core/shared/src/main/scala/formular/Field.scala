@@ -61,7 +61,7 @@ sealed trait BaseField extends Field {
   override def validateState(fieldState: FieldState): Option[String] = decodeAndValidateState(fieldState).left.toOption
 }
 
-case class TextField(id: Int, label: String, minLength: Int) extends BaseField {
+case class TextField(id: Int, label: String, minLength: Int, default: String = "") extends BaseField {
   override type Value = String
 
   override def encodeState(value: Either[String, String]): FieldState = FieldState(Pickle(value))
@@ -74,10 +74,10 @@ case class TextField(id: Int, label: String, minLength: Int) extends BaseField {
     else
       None
 
-  override def defaultState: FieldState = encodeState(Right(""))
+  override def defaultState: FieldState = encodeState(Right(default))
 }
 
-case class IntField(id: Int, label: String, required: Boolean, min: Option[Int] = None, max: Option[Int] = None) extends BaseField {
+case class IntField(id: Int, label: String, required: Boolean, min: Option[Int] = None, max: Option[Int] = None, default: Option[Int] = None) extends BaseField {
   override type Value = Option[Int]
 
   override def encodeState(value: Either[String, Option[Int]]): FieldState = FieldState(Pickle(value))
@@ -94,5 +94,5 @@ case class IntField(id: Int, label: String, required: Boolean, min: Option[Int] 
     else
       None
 
-  override def defaultState: FieldState = encodeState(Right(None))
+  override def defaultState: FieldState = encodeState(Right(default))
 }
